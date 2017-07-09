@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let source of sources">
+    <a (click)="sourceClicked(source)" style="cursor:pointer;">{{ source.name }}</a>
+  </li>
+</ul>
