@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  newsApiBaseUri: 'https://newsapi.org/v1'
 };
