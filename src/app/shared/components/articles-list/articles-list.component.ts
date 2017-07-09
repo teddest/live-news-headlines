@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { ArticlesService } from '../../../shared/services';
+import { ArticlesService, ISource } from '../../../shared/services';
 
 @Component({
   selector: 'app-articles-list',
@@ -8,14 +8,14 @@ import { ArticlesService } from '../../../shared/services';
   styleUrls: ['./articles-list.component.css']
 })
 export class ArticlesListComponent implements OnInit {
-  private _source: any;
+  private _source: ISource;
 
   @Input('source')
-  set source(source: any) {
+  set source(source: ISource) {
     this._source = source;
     this.getArticles();
   }
-  get source(): any {
+  get source(): ISource {
     return this._source;
   }
 

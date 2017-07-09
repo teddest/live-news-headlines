@@ -10,12 +10,12 @@ import { SourcesService, ISource } from '../../../shared/services';
 export class SourcesListComponent implements OnInit {
   public sources: Array<ISource>;
 
-  @Output() sourceSelected: EventEmitter<ISource> = new EventEmitter();
+  @Output() selectedSource: EventEmitter<ISource> = new EventEmitter();
 
   constructor(private sourcesService: SourcesService) { }
 
   public sourceClicked(source: ISource) {
-    this.sourceSelected.emit(source);
+    this.selectedSource.emit(source);
   }
 
   ngOnInit() {

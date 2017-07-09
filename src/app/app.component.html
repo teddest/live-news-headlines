@@ -15,9 +15,18 @@
 
   <div class="ui grid">
     <div class="four wide column">
-      <app-sources-list (sourceSelected)="onSelectedSource($event)"></app-sources-list>
+      <app-sources-list (selectedSource)="onSelectedSource($event)"></app-sources-list>
     </div>
     <div class="twelve wide column">
+      <ng-container *ngIf="!selectedSource">
+        <div class="ui info message">
+          <div class="header">
+            Welcome!
+          </div>
+          <p>Select a news source from the list to view latest headlines for that source.</p>
+        </div>
+      </ng-container>
+
       <ng-container *ngIf="selectedSource">
         <app-articles-list [source]="selectedSource"></app-articles-list>
       </ng-container>
