@@ -10,6 +10,8 @@ import { ArticlesService, ISource } from '../../../shared/services';
 export class ArticlesListComponent implements OnInit {
   private _source: ISource;
 
+  public loading: boolean;
+
   @Input('source')
   set source(source: ISource) {
     this._source = source;
@@ -24,9 +26,12 @@ export class ArticlesListComponent implements OnInit {
   constructor(private articlesService: ArticlesService) { }
 
   public getArticles() {
+    this.loading = true;
+
     this.articlesService
       .getArticlesBySource(this._source.id)
       .subscribe(response => {
+        this.loading = false;
         this.articles = response.articles
       });
   }

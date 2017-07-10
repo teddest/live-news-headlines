@@ -2,24 +2,30 @@
 
 <div class="ui clearing divider"></div>
 
-<div class="ui items" *ngFor="let article of articles">
+<div class="ui active centered inline loader" *ngIf="loading"></div>
 
-  <div class="item">
-    <div class="image">
-      <img [src]="article.urlToImage || 'assets/images/placeholder-image.png'">
+<ng-container *ngIf="!loading">
+
+  <div class="ui items" *ngFor="let article of articles">
+
+    <div class="item">
+      <div class="image">
+        <img [src]="article.urlToImage || 'assets/images/placeholder-image.png'">
+      </div>
+      <div class="content">
+        <a [href]="article.url" target="_blank" class="header">{{ article.title }}</a>
+        <div class="meta">
+          <span>{{ article.publishedAt | date:'medium' }}</span>
+        </div>
+        <div class="description">
+          <p>{{ article.description }}</p>
+        </div>
+        <div class="extra" *ngIf="article.author">
+          By: {{ article.author }}
+        </div>
+      </div>
     </div>
-    <div class="content">
-      <a [href]="article.url" target="_blank" class="header">{{ article.title }}</a>
-      <div class="meta">
-        <span>{{ article.publishedAt | date:'medium' }}</span>
-      </div>
-      <div class="description">
-        <p>{{ article.description }}</p>
-      </div>
-      <div class="extra" *ngIf="article.author">
-        By: {{ article.author }}
-      </div>
-    </div>
+
   </div>
 
-</div>
+</ng-container>
