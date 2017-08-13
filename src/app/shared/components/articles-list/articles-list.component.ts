@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { ArticlesService, ISource } from '../../../shared/services';
+import { ArticlesService, IArticle, ISource } from '../../../shared/services';
 
 @Component({
   selector: 'app-articles-list',
@@ -21,7 +21,7 @@ export class ArticlesListComponent implements OnInit {
     return this._source;
   }
 
-  public articles;
+  public articles: Array<IArticle>;
 
   constructor(private articlesService: ArticlesService) { }
 
@@ -32,7 +32,7 @@ export class ArticlesListComponent implements OnInit {
       .getArticlesBySource(this._source.id)
       .subscribe(response => {
         this.loading = false;
-        this.articles = response.articles
+        this.articles = response.articles;
       });
   }
 

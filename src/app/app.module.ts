@@ -21,7 +21,8 @@ import { AppComponent } from './app.component';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
-  }],
+  },
+    SHARED_SERVICES],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

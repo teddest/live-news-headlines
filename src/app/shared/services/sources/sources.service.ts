@@ -19,6 +19,10 @@ export interface ISource {
   sortBysAvailable: Array<string>;
 }
 
+export interface ISources {
+  sources: Array<ISource>;
+}
+
 @Injectable()
 export class SourcesService {
   private _newsApiBaseUri: string = environment.newsApiBaseUri;
@@ -26,9 +30,9 @@ export class SourcesService {
   constructor(private http: HttpClient) { }
 
   public getSources(language: string = 'en') {
-    return this.http.get(`${this._newsApiBaseUri}/sources?language=${language}`)
+    return this.http.get<ISources>(`${this._newsApiBaseUri}/sources?language=${language}`)
       .map(response => {
-        return response;
+        return response.sources;
       });
   }
 }

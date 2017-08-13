@@ -8,7 +8,7 @@ import { SourcesService, ISource } from '../../../shared/services';
   styleUrls: ['./sources-list.component.css']
 })
 export class SourcesListComponent implements OnInit {
-  public sources: Array<ISource>;
+  public sources: any;
 
   @Output() selectedSource: EventEmitter<ISource> = new EventEmitter();
 
@@ -22,7 +22,7 @@ export class SourcesListComponent implements OnInit {
     this.sourcesService
       .getSources()
       .subscribe(response => {
-        this.sources = response.sources;
+        this.sources = response;
       });
   }
 
