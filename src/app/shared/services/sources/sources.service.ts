@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 // Import RxJs required methods
@@ -23,12 +23,12 @@ export interface ISource {
 export class SourcesService {
   private _newsApiBaseUri: string = environment.newsApiBaseUri;
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   public getSources(language: string = 'en') {
     return this.http.get(`${this._newsApiBaseUri}/sources?language=${language}`)
       .map(response => {
-        return response.json();
+        return response;
       });
   }
 }
